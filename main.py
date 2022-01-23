@@ -1,3 +1,6 @@
+from math import floor
+
+
 def lbtt_calculator(house_value):
     # Initialise values
     remaining_house_value = house_value
@@ -19,7 +22,7 @@ def lbtt_calculator(house_value):
             remaining_house_value -= taxable_amount
         else:
             break
-    return lbtt_value
+    return floor(lbtt_value)
 
 
 if __name__ == "__main__":

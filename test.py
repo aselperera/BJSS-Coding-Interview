@@ -65,3 +65,9 @@ def test_750():
 
 def test_750_1():
     assert lbtt_calculator(750100) == 48362
+
+# Check flooring is working correctly
+
+
+def test_145_040():
+    assert lbtt_calculator(145040) == 0  # Without flooring, LBTT = £0.80
