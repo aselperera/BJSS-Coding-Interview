@@ -1,5 +1,8 @@
 from main import lbtt_calculator
 
+# The correct answers to the test queries where gathered from:
+# https://revenue.scot/calculate-tax/calculate-property-transactions#calculator
+
 # Check values that fit in each bracket
 
 
