@@ -24,22 +24,16 @@ def lbtt_calculator(house_value):
     lbtt_value = 0
 
     # Obtained from https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property
-    rates = [0, 0.02, 0.05, 0.1, 0.12]
-    # Value above which corresponding rate applies
-    brackets = [0, 145000, 250000, 325000, 750000]
+    slabs = [(750000, 0.12), (325000, 0.1),
+             (250000, 0.05), (145000, 0.02), (0, 0)]
 
-    for count, bracket in enumerate(brackets):
-        if remaining_house_value > 0:
-            try:
-                taxable_amount = min(
-                    brackets[count+1]-bracket, remaining_house_value)
-            except IndexError:
-                # Catches the case where value > £750,000
-                taxable_amount = remaining_house_value
-            lbtt_value += taxable_amount * rates[count]
-            remaining_house_value -= taxable_amount
+    for slab in slabs:
+        if remaining_house_value > slab[0]:
+            lbtt_value += (remaining_house_value - slab[0])*slab[1]
+            remaining_house_value = slab[0]
         else:
-            break
+            continue
+
     return floor(lbtt_value)  # Round down to the nearest £
 
 
